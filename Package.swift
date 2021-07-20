@@ -11,11 +11,34 @@ let package = Package(
     .library(name: "RxViewController", targets: ["RxViewController"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
-    .package(url: "https://github.com/devxoul/RxExpect.git", .upToNextMajor(from: "2.0.0")),
+    .package(
+        url: "https://github.com/ReactiveX/RxSwift.git",
+        .upToNextMajor(from: "6.0.0")
+    ),
+    .package(
+        url: "https://github.com/Moriya-Taichi/RxExpect.git",
+        .upToNextMajor(from: "2.0.1")),
   ],
   targets: [
-    .target(name: "RxViewController", dependencies: ["RxSwift", "RxCocoa"]),
-    .testTarget(name: "RxViewControllerTests", dependencies: ["RxViewController", "RxExpect"]),
+    .target(
+        name: "RxViewController",
+        dependencies: [
+            .product(
+                name: "RxSwift",
+                package: "RxSwift"
+            ),
+            .product(
+                name: "RxCocoa",
+                package: "RxSwift"
+            )
+        ]
+    ),
+    .testTarget(
+        name: "RxViewControllerTests",
+        dependencies: [
+            "RxViewController",
+            "RxExpect"
+        ]
+    ),
   ]
 )
