@@ -17,7 +17,8 @@ let package = Package(
     ),
     .package(
         url: "https://github.com/Moriya-Taichi/RxExpect.git",
-        .upToNextMajor(from: "2.0.1")),
+        .exact("2.0.1")
+    ),
   ],
   targets: [
     .target(
